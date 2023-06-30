@@ -17,7 +17,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+        // hooks
   resultTv = findViewById(R.id.result_tv);
   solutionTview = findViewById(R.id.solution_tview);
 
