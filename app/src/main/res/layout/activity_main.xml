@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pas"
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
 
 
     <TextView
-        android:id="@+id/solution_tv"
+        android:id="@+id/solution_tview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/result_tv"
-        android:layout_marginBottom="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:paddingEnd="20dp"
         android:text="0"
-        android:layout_margin="10dp"
         android:textAlignment="textEnd"
         android:textColor="@color/black"
         android:textSize="45dp"></TextView>

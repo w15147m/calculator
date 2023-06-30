@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-  TextView resultTv,solutionTv;
+  TextView resultTv,solutionTview;
    MaterialButton buttonc,buttonfb,buttonbb,buttonAC,buttondot;
    MaterialButton buttondivide,buttonmultiply,buttonminus,buttonplus,buttonequls;
    MaterialButton button1,button2,button3,button4,button5,button6,button7,button8,button9,button0;
@@ -19,8 +19,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
   resultTv = findViewById(R.id.result_tv);
-  solutionTv = findViewById(R.id.solution_tv);
-        solutionTv.setText("");
+  solutionTview = findViewById(R.id.solution_tview);
+
+        solutionTview.setText("");
+        resultTv.setText("");
         assingId(R.id.button_c);
         assingId(R.id.button_bb);
         assingId(R.id.button_fb);
@@ -61,40 +63,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         MaterialButton button = (MaterialButton) v;
         String btnText  = button.getText().toString();
-        String dataToCalculat = solutionTv.getText().toString();
+        String dataToCalculat = solutionTview.getText().toString();
 
 
 
+        if(btnText.equals("=")){
 
-        if (btnText.equals("AC")){
-
-            solutionTv.setText("");
-            resultTv.setText("0");
+            resultTv.setText(solutionTview.getText());
 
 
         }
+        if(btnText.equals("c")){
 
-      if (btnText.equals("=")){
-
-            resultTv.setText(solutionTv.getText());
-
-        }
-
-
-     if(btnText.equals("c")){
-
-            dataToCalculat = dataToCalculat.substring(0,dataToCalculat.length()-1);
-
-        }else  {
-
+            dataToCalculat = dataToCalculat.substring(0 ,dataToCalculat.length()-1);
+        }else{
             dataToCalculat = dataToCalculat + btnText;
 
         }
+        if(btnText.equals("AC")){
 
-
-
-
-        solutionTv.setText(dataToCalculat);
+            solutionTview.setText("");
+            resultTv.setText("");
+        }else {
+            solutionTview.setText(dataToCalculat);
+        }
 
     }
 }
