@@ -26,8 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         solutionTview.setText("");
         resultTv.setText("");
         assingId(R.id.button_c);
-        assingId(R.id.button_bb);
-        assingId(R.id.button_fb);
+        assingId(R.id.button_mdu);
         assingId(R.id.button_divide);
         assingId(R.id.button_1);
         assingId(R.id.button_2);
