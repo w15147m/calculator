@@ -3,7 +3,8 @@ package com.example.calculator;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
+import org.mozilla.javascript.Context;
+import  org.mozilla.javascript.Scriptable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
@@ -67,8 +68,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String dataToCalculat = solutionTview.getText().toString();
 
 
+   if(btnText.equals("AC")){
+       solutionTview.setText("");
+       resultTv.setText("");
+       return;
 
-        if(btnText.equals("=")){
+   } else if (btnText.equals("=")) {
+
+    resultTv.setText(resultTv.getText());
+    solutionTview.setText("");
+    return;
+   }
+   else if (btnText.equals("C")) {
+
+       dataToCalculat = dataToCalculat.substring(0 ,dataToCalculat.length()-1);
+       return;
+   }else {
+
+       dataToCalculat = dataToCalculat + btnText;
+     String fResult = getResult(dataToCalculat);
+     if (!fResult.equals("Err")){
+   resultTv.setText(fResult);
+
+     }
+
+   }
+
+
+
+
+        solutionTview.setText(dataToCalculat);
+
+      /*  if(btnText.equals("=")){
 
             resultTv.setText(solutionTview.getText());
 
@@ -87,6 +118,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             resultTv.setText("");
         }else {
             solutionTview.setText(dataToCalculat);
+        }*/
+
+    }
+    String getResult(String data){
+        try{
+            Context context  = Context.enter();
+            context.setOptimizationLevel(-1);
+            Scriptable scriptable = context.initStandardObjects();
+            String finalResult =  context.evaluateString(scriptable,data,"Javascript",1,null).toString();
+            if(finalResult.endsWith(".0")){
+                finalResult = finalResult.replace(".0","");
+            }
+            return finalResult;
+        }catch (Exception e){
+            return "Err";
         }
 
     }
